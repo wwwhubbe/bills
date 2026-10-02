@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- 只允許載入本站自己的檔案，禁止連線到任何其他網站：資料無法被傳出去 -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<title>扣款管家</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="扣款管家">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1513" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-180.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="lock" hidden>
+  <form id="lockForm" class="lockbox" autocomplete="off">
+    <div class="lockicon">🔒</div>
+    <h1>扣款管家</h1>
+    <p>請輸入密碼</p>
+    <input id="lockPin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" aria-label="密碼">
+    <button class="btn primary" type="submit">解鎖</button>
+    <p id="lockMsg" class="err"></p>
+    <button class="link" type="button" data-act="forgot">忘記密碼？</button>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="top">
+    <h1 id="title">總覽</h1>
+    <button class="btn primary small" data-act="newItem">＋ 新增項目</button>
+  </header>
+  <main id="view"></main>
+  <nav class="tabs" aria-label="主選單">
+    <button data-tab="home"><span class="ti">◉</span>總覽</button>
+    <button data-tab="items"><span class="ti">☰</span>項目</button>
+    <button data-tab="records"><span class="ti">▤</span>紀錄</button>
+    <button data-tab="stats"><span class="ti">▥</span>統計</button>
+    <button data-tab="settings"><span class="ti">⚙</span>設定</button>
+  </nav>
+</div>
+
+<div id="sheet" class="sheet" hidden><div class="sheetbg" data-act="close"></div><div class="panel" id="panel" role="dialog" aria-modal="true"></div></div>
+<div id="toast" class="toast" hidden></div>
+<input id="importFile" type="file" accept=".json,application/json" hidden>
+<noscript>此 App 需要開啟 JavaScript 才能使用。</noscript>
+<script src="app.js"></script>
+</body>
+</html>
